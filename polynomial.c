@@ -12,7 +12,7 @@ int main(void) {
     printf("Enter a value of x: ");
     scanf("%d", &x);
 
-    sum = (3 * (x*x*x*x*x)) + (2 * (x*x*x*x)) - (5 * (x*x*x)) - (x * x) + (7 * x) - 6;
+    sum = ((((3 * x + 2) * x - 5) * x - 1) * x + 7) * x - 6;
 
     printf("Polynomial of X: %d", sum);
 
