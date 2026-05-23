@@ -20,7 +20,7 @@ int main(void) {
             printf("Program terminated.\n");
             break;
         }
-
+        
         int temp = number;
         while (temp > 0 && temp < 1000000000) { // Limit to 9 digits
             int digit = temp % 10;
