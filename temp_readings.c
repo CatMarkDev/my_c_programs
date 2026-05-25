@@ -7,19 +7,19 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define DAYS 30
+#define HOUR 30
 #define HOURS 24
 
 int main(void) {
 
     srand((unsigned int)time(NULL)); // Seed the random number generator
-    float temp_readings[DAYS][HOURS] = {0.0f};
+    float temp_readings[HOUR][HOURS] = {0.0f};
     float total_temp = 0.0f;
     float avg_temp = 0.0f;
     
     // Display the temperature readings
     printf("\nTemperature Readings:\n");
-    for (int day = 0; day < DAYS; day++) {
+    for (int day = 0; day < HOUR; day++) {
         printf("Day %2d: ", day + 1);
         for (int hour = 0; hour < HOURS; hour++) {
             temp_readings[day][hour] = (float)(rand() % 101); // Generate a random temperature between 0 and 100
@@ -29,7 +29,7 @@ int main(void) {
         printf("\n");
     }
 
-    avg_temp = total_temp / (DAYS * HOURS);
+    avg_temp = total_temp / (HOUR * HOURS);
     printf("\nAverage Temperature: %.2f\n", avg_temp);
 
     return 0;    
