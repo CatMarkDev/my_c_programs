@@ -6,11 +6,12 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define SIZE 100
 
 void get_message(char m[], int n, int *len);
-bool is_palindrome(const char m[], int len);
+bool is_palindrome(const char *message);
 
 int main(void) {
     char message[SIZE];
@@ -19,7 +20,7 @@ int main(void) {
     printf("Enter message: ");
     get_message(message, SIZE, &length);
 
-    if(is_palindrome(message, length)){
+    if(is_palindrome(message)){
         printf("Palindrome.\n");
     } else {
         printf("Not a palindrome.\n");
@@ -41,20 +42,19 @@ void get_message(char m[], int n, int *len) {
 }
 
 // Function to check if the message is a palindrome
-bool is_palindrome(const char m[], int len){
-    int left, right;
-    left = 0;
-    right = len - 1;
+bool is_palindrome(const char *message){
+    const char *left, *right;
+
+    left = message;
+    right = message + strlen(message) - 1;
     while(left < right){
-        if(!isalpha(*(m + left))) {
+        while(left < right && !isalnum((unsigned char)*left)){
             left++;
-            continue;
         }
-        if(!isalpha(*(m + right))) {
+        while(left < right && !isalnum((unsigned char)*right)){
             right--;
-            continue;
         }
-        if(tolower(*(m + left)) != tolower(*(m + right))) {
+        if(tolower((unsigned char)*left) != tolower((unsigned char)*right)){
             return false;
         }
         left++;
